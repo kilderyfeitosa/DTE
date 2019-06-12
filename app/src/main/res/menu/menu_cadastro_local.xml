@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.activity.CadastroLocalActivity">
+
+        <item
+            android:id="@+id/nav_cadastrar_local"
+            android:icon="@drawable/ic_check"
+            android:title="@string/cadastrar"
+            android:orderInCategory="100"
+            app:showAsAction="always"/>
+</menu>
+

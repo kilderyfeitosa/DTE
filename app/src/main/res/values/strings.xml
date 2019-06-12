@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">DTE</string>
+
+    //TELA INICIAL
+    <string name="inicio">Início</string>
+    <string name="perfil">Perfil</string>
+    <string name="cadastrar_um_local">Cadastrar um Local</string>
+    <string name="meus_locais">Meus Locais</string>
+    <string name="cadastrar_local">Cadastrar Local</string>
+    <string name="menu_entrar">Entrar</string>
+    <string name="sobre">Sobre</string>
+    <string name="sair">Sair</string>
+
+    <string name="buscar_locais">Buscar Locais</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    //TELA DE LOGIN
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">ENTRAR</string>
+    <string name="informe_seu_email_e_senha">"Informe seu e-mail e senha!"</string>
+    <string name="fazer_meu_cadastro">Fazer meu cadastro</string>
+    <string name="bem_vindo_ao_aplicativo">Bem vindo ao App Base!</string>
+    <string name="falha_na_autenticacao">Falha na autenticação, tente novamente!</string>
+
+    //CADASTRO DE LOCAL
+    <string name="nome">Nome</string>
+    <string name="adicionar_nome">Adicionar nome</string>
+    <string name="local">Local</string>
+    <string name="adicionar_endereco">Adicionar endereço</string>
+    <string name="contato">Contato</string>
+    <string name="adicionar_numero_de_telefone">Adicionar número de telefone</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="horario_de_funcionamento">Horário de funcionamento</string>
+    <string name="adicionar_horario">Adicionar Horário</string>
+    <string name="materiais_aceitos">Matériais aceitos</string>
+    <string name="adicionar_material">Adicionar material</string>
+
+    //CADASTRO USUARIO
+    <string name="cadastrar_usuario">Cadastrar Usuário</string>
+    <string name="adicionar_email">Adicionar E-mail</string>
+    <string name="senha_de_acesso">Senha de Acesso</string>
+    <string name="adicionar_senha">Adicionar Senha</string>
+    <string name="usuario_cadastrado_com_sucesso">Usuaário cadastrado com sucesso!</string>
+
+    //BUSCAR LOCAIS DE COLETA
+    <string name="digite_um_nome_ou_material">Nome do local ou material</string>
+    <string name="nenhum_local_cadastrado">Nenhum local cadastrado</string>
+
+    //ADICIONAR HORÁRIO DE FUNCIONAMENTO
+
+
+</resources>

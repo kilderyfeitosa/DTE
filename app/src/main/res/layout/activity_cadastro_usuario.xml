@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.CadastroUsuarioActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_cadastro_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/MyActionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="@color/blank_text_color" />
+
+    <ImageView
+        android:id="@+id/image_email_local"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_email"
+        android:tint="@color/icon_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_cadastro_usuario"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/label_email_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/email"
+        app:layout_constraintBottom_toBottomOf="@+id/image_email_local"
+        app:layout_constraintStart_toEndOf="@+id/image_email_local"
+        app:layout_constraintTop_toTopOf="@+id/image_email_local" />
+
+    <EditText
+        android:id="@+id/email_cadastro_usuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/adicionar_email"
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/label_email_local"
+        app:layout_constraintTop_toBottomOf="@+id/label_email_local"
+        tools:ignore="Autofill" />
+
+    <ImageView
+        android:id="@+id/image_senha_local"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_lock_outline"
+        android:tint="@color/icon_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_cadastro_usuario"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/label_senha_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/senha_de_acesso"
+        app:layout_constraintBottom_toBottomOf="@+id/image_senha_local"
+        app:layout_constraintStart_toEndOf="@+id/image_senha_local"
+        app:layout_constraintTop_toTopOf="@+id/image_senha_local" />
+
+    <EditText
+        android:id="@+id/senha_cadastro_usuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/adicionar_senha"
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/label_senha_local"
+        app:layout_constraintTop_toBottomOf="@+id/label_senha_local"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/bt_cadastrar_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/cadastrar"
+        android:textColor="@color/blank_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_cadastro_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_cadastrar_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_cadastrar_usuario" />
+
+</android.support.constraint.ConstraintLayout>

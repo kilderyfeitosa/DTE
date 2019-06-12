@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.CadastroLocalActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_cadastro_local"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/MyActionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="@color/blank_text_color" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_cadastro_local"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/progress_cadastro_local"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_cadastro_local">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/image_nome_local"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/store"
+                    android:tint="@color/icon_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/label_nome_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/nome"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_nome_local"
+                    app:layout_constraintStart_toEndOf="@+id/image_nome_local"
+                    app:layout_constraintTop_toTopOf="@+id/image_nome_local" />
+
+                <EditText
+                    android:id="@+id/nome_local_cadastro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/adicionar_nome"
+                    android:inputType="text"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/label_nome_local"
+                    app:layout_constraintTop_toBottomOf="@+id/label_nome_local"
+                    tools:ignore="Autofill" />
+
+                <ImageView
+                    android:id="@+id/image_local_local"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/ic_map_marker_outline"
+                    android:tint="@color/icon_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nome_local_cadastro"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/label_local_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/local"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_local_local"
+                    app:layout_constraintStart_toEndOf="@+id/image_local_local"
+                    app:layout_constraintTop_toTopOf="@+id/image_local_local" />
+
+                <EditText
+                    android:id="@+id/local_local_cadastro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/adicionar_endereco"
+                    android:inputType="text"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/label_local_local"
+                    app:layout_constraintTop_toBottomOf="@+id/label_local_local"
+                    tools:ignore="Autofill" />
+
+                <ImageView
+                    android:id="@+id/image_contato_local"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/phone"
+                    android:tint="@color/icon_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/local_local_cadastro"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/label_contato_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/contato"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_contato_local"
+                    app:layout_constraintStart_toEndOf="@+id/image_contato_local"
+                    app:layout_constraintTop_toTopOf="@+id/image_contato_local" />
+
+                <EditText
+                    android:id="@+id/local_contato_cadastro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/adicionar_numero_de_telefone"
+                    android:inputType="phone"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/label_contato_local"
+                    app:layout_constraintTop_toBottomOf="@+id/label_contato_local"
+                    tools:ignore="Autofill" />
+
+                <ImageView
+                    android:id="@+id/image_horario_local"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/clock_outline"
+                    android:tint="@color/icon_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/local_contato_cadastro"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/label_horario_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/horario_de_funcionamento"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_horario_local"
+                    app:layout_constraintStart_toEndOf="@+id/image_horario_local"
+                    app:layout_constraintTop_toTopOf="@+id/image_horario_local" />
+
+
+                <EditText
+                    android:id="@+id/local_horario_cadastro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/adicionar_numero_de_telefone"
+                    android:inputType="text"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/label_horario_local"
+                    app:layout_constraintTop_toBottomOf="@+id/label_horario_local"
+                    tools:ignore="Autofill" />
+
+                <ImageView
+                    android:id="@+id/image_materiais_local"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/trash_can"
+                    android:tint="@color/icon_color"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/local_horario_cadastro"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/label_materiais_local"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/materiais_aceitos"
+                    app:layout_constraintBottom_toBottomOf="@+id/image_materiais_local"
+                    app:layout_constraintStart_toEndOf="@+id/image_materiais_local"
+                    app:layout_constraintTop_toTopOf="@+id/image_materiais_local" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/tipos_materiais_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/label_materiais_local" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_carregando_cadastro_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_cadastrar_local"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/cadastrar"
+        android:textColor="@color/blank_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_cadastro_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_cadastrar_local"
+        app:layout_constraintEnd_toEndOf="@+id/bt_cadastrar_local"
+        app:layout_constraintStart_toStartOf="@+id/bt_cadastrar_local"
+        app:layout_constraintTop_toTopOf="@+id/bt_cadastrar_local" />
+
+</android.support.constraint.ConstraintLayout>
