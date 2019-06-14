@@ -17,17 +17,20 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="5dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/ic_launcher"
+            />
 
         <TextView
             android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="200dp"
             android:layout_alignLeft="@+id/profile_image"
-            android:layout_marginLeft="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="7dp"
+            android:maxWidth="180dp"
             android:padding="5dp"
-            android:text="Helljhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjhjjjhjm,m,m,nmnm,nm,m,m,m,m,m,m,mho"
+            android:text="Hello"
             android:textColor="@color/cinza_text_color"
             android:textSize="18sp" />
 
@@ -36,11 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/show_message"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="7dp"
             android:layout_marginLeft="45dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="-18dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_toEndOf="@+id/show_message"
             android:text="10:25"
             android:textColor="@color/cinza_claro_text_color"

@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="end"
     android:padding="8dp">
 
     <RelativeLayout
@@ -25,10 +24,14 @@
             android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxWidth="200dp"
             android:layout_alignRight="@+id/profile_image"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:maxWidth="200dp"
             android:padding="2dp"
-            android:layout_margin="5dp"
             android:text="Hello"
             android:textColor="@color/blank_text_color"
             android:textSize="18sp" />
@@ -37,9 +40,12 @@
             android:id="@+id/show_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/show_message"
-            android:layout_margin="5dp"
 
+            android:layout_below="@+id/show_message"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="-19dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_toEndOf="@+id/show_message"
             android:text="10:25"
             android:textColor="@color/cinza_claro_text_color"

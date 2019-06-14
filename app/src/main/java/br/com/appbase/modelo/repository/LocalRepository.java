@@ -37,7 +37,8 @@ public class LocalRepository {
                 List<Local> locais = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Local local = snapshot.getValue(Local.class);
-                    locais.add(local);
+                    if(!local.getUserKey().equals(mAuth.getUid()))
+                        locais.add(local);
                 }
                 firebaseCallback.onSuccess(locais);
             }
