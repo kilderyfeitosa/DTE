@@ -10,7 +10,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_cadastro_usuario"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="45dp"
         android:background="?attr/colorPrimary"
         android:theme="@style/MyActionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,15 +20,52 @@
         app:titleTextColor="@color/blank_text_color" />
 
     <ImageView
-        android:id="@+id/image_email_local"
+        android:id="@+id/image_usuario"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:src="@drawable/ic_email"
+        android:src="@drawable/account_outline"
         android:tint="@color/icon_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_cadastro_usuario"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/label_nome_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/nome"
+        app:layout_constraintBottom_toBottomOf="@+id/image_usuario"
+        app:layout_constraintStart_toEndOf="@+id/image_usuario"
+        app:layout_constraintTop_toTopOf="@+id/image_usuario" />
+
+    <EditText
+        android:id="@+id/nome_cadastro_usuario"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/adicionar_nome"
+        android:inputType="textEmailAddress"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/label_nome_usuario"
+        app:layout_constraintTop_toBottomOf="@+id/label_nome_usuario"
+        tools:ignore="Autofill" />
+
+
+    <ImageView
+        android:id="@+id/image_email_local"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_email"
+        android:tint="@color/icon_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome_cadastro_usuario"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -36,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="@string/email"
         app:layout_constraintBottom_toBottomOf="@+id/image_email_local"
         app:layout_constraintStart_toEndOf="@+id/image_email_local"

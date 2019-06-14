@@ -53,6 +53,9 @@ public class UsuarioRepository {
                             String userid = mAuth.getCurrentUser().getUid();
                             if (userid != null) {
                                 Usuario novoUsuario = new Usuario(usuario.getEmail(), null);
+                                novoUsuario.setUserKey(mAuth.getCurrentUser().getUid());
+                                novoUsuario.setImgURL("default");
+                                novoUsuario.setNome(usuario.getNome());
                                 databaseReference.child(userid).setValue(novoUsuario)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

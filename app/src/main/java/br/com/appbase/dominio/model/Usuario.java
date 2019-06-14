@@ -1,11 +1,11 @@
 package br.com.appbase.dominio.model;
 
-import br.com.appbase.view.util.TipoUsuario;
-
 public class Usuario {
     private String email;
     private String senha;
-    private TipoUsuario tipoUsuario;
+    private String nome;
+    private String imgURL;
+    private String userKey;
 
     public Usuario(){
 
@@ -15,6 +15,14 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
     }
+
+    public Usuario(String email, String nome, String imgURL, String userKey) {
+        this.email = email;
+        this.nome = nome;
+        this.imgURL = imgURL;
+        this.userKey = userKey;
+    }
+
 
     public String getEmail() {
         return email;
@@ -32,11 +40,27 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
+    public String getNome()  {
+        return nome;
     }
 
-    public void setTipoUsuario(TipoUsuario tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
+
+    public String getUserKey() {
+        return userKey;
+    }
+
+    public void setUserKey(String userKey) {
+        this.userKey = userKey;
     }
 }

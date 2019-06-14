@@ -43,11 +43,14 @@
     <string name="adicionar_email">Adicionar E-mail</string>
     <string name="senha_de_acesso">Senha de Acesso</string>
     <string name="adicionar_senha">Adicionar Senha</string>
-    <string name="usuario_cadastrado_com_sucesso">Usuaário cadastrado com sucesso!</string>
+    <string name="usuario_cadastrado_com_sucesso">Usuário cadastrado com sucesso!</string>
 
     //BUSCAR LOCAIS DE COLETA
     <string name="digite_um_nome_ou_material">Nome do local ou material</string>
     <string name="nenhum_local_cadastrado">Nenhum local cadastrado</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     //ADICIONAR HORÁRIO DE FUNCIONAMENTO
 

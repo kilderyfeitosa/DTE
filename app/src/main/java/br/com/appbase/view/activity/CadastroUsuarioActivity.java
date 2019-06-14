@@ -21,6 +21,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
     private TextView email;
     private TextView senha;
+    private TextView nome;
     private Button btCadastrar;
     private ProgressBar progressBar;
 
@@ -57,6 +58,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     }
 
     private void configurarViews() {
+        nome = findViewById(R.id.nome_cadastro_usuario);
         email = findViewById(R.id.email_cadastro_usuario);
         senha = findViewById(R.id.senha_cadastro_usuario);
 
@@ -75,10 +77,16 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     private void cadastrarUsuario() {
         configurarViewsRealizandoCadastro(true);
 
+        String nomeUsuario = nome.getText().toString().trim();
         String emailUsuario = email.getText().toString().trim();
         String senhaUsuario = senha.getText().toString().trim();
 
-        cadastroUsuarioViewModel.cadastrarUsuario(new Usuario(emailUsuario, senhaUsuario));
+        Usuario usuario = new Usuario();
+        usuario.setNome(nomeUsuario);
+        usuario.setEmail(emailUsuario);
+        usuario.setSenha(senhaUsuario);
+
+        cadastroUsuarioViewModel.cadastrarUsuario(usuario);
     }
 
     private void observarCadastroRealizado() {

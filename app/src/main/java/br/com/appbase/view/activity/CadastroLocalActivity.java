@@ -197,7 +197,6 @@ public class CadastroLocalActivity extends AppCompatActivity {
     }*/
 
     private void salvarLocal() {
-        configurarViewsCadastrando(true);
 
         EditText nome = findViewById(R.id.nome_local_cadastro);
         EditText local = findViewById(R.id.local_local_cadastro);
@@ -219,7 +218,25 @@ public class CadastroLocalActivity extends AppCompatActivity {
                 mAuth.getUid()
         );
 
-        viewModel.salvarLocal(novoLocal);
+
+        if(!nome.getText().toString().trim().isEmpty() &&
+        !local.getText().toString().trim().isEmpty() &&
+        !contato.getText().toString().trim().isEmpty() &&
+        !materiaisAceitos.isEmpty()){
+                configurarViewsCadastrando(true);
+                viewModel.salvarLocal(novoLocal);
+        }else{
+            if(nome.getText().toString().isEmpty())
+                nome.setError("Nome obrigatório");
+            if(local.getText().toString().isEmpty())
+                local.setError("Local obrigatório");
+            if(nome.getText().toString().isEmpty())
+                contato.setError("Contato obrigatório");
+            if(materiaisAceitos.isEmpty())
+                Toast.makeText(this, "Marque pelo menos um tipo de material de descarte.", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "Preencha os campos obrigatórios", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

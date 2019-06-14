@@ -70,8 +70,6 @@ public class MeusLocaisActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MeusLocaisActivity.this, MainActivity.class);
-                startActivity(i);
                 finish();
             }
         });
@@ -187,6 +185,7 @@ public class MeusLocaisActivity extends AppCompatActivity {
             searchViewBuscarLocais.closeSearch();
         } else {
             super.onBackPressed();
+            finish();
         }
     }
 }
