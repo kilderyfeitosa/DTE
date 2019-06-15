@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".view.activity.MessageActivity"></activity>
+        <activity android:name=".view.activity.DetalhesLocalActivity"></activity>
+        <activity android:name=".view.activity.MessageActivity" />
         <activity android:name=".view.activity.MensagemActivity" />
         <activity android:name=".view.activity.ApresentacaoActivity">
             <intent-filter>

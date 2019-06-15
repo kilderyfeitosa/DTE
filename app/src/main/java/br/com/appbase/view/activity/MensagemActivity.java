@@ -54,7 +54,7 @@ public class MensagemActivity extends AppCompatActivity {
 
     private void configurarFirebase(){
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Usuarios").child(firebaseUser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("usuarios").child(firebaseUser.getUid());
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override

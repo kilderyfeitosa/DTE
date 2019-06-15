@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +22,7 @@ import java.util.List;
 import br.com.appbase.R;
 import br.com.appbase.dominio.model.Local;
 import br.com.appbase.dominio.model.TipoMaterial;
+import br.com.appbase.view.activity.DetalhesLocalActivity;
 import br.com.appbase.view.activity.MensagemActivity;
 import br.com.appbase.view.util.FirebaseAuthApp;
 
@@ -57,8 +59,11 @@ public class LocaisAdapter extends RecyclerView.Adapter<LocaisAdapter.ViewHolder
                 if(FirebaseAuthApp.getUsuarioLogado() != null){
                     Toast.makeText(context, "Abriu o " + local.getNome(), Toast.LENGTH_LONG).show();
 
-                    Intent abrirChat = new Intent(context, MensagemActivity.class);
+                    Intent abrirChat = new Intent(context, DetalhesLocalActivity.class);
+                    abrirChat.putExtra("local", local);
                     context.startActivity(abrirChat);
+                } else {
+                    Toast.makeText(context, "Cadastre-se para prosseguir!", Toast.LENGTH_LONG);
                 }
             }
         });

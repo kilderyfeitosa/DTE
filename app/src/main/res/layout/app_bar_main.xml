@@ -35,6 +35,6 @@
 
     <include
         android:id="@+id/include_main"
-        layout="@layout/content_main_activity"/>
+        layout="@layout/content_main_activity" />
 
 </android.support.design.widget.CoordinatorLayout>

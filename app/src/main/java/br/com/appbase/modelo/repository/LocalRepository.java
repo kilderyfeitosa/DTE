@@ -18,6 +18,7 @@ import java.util.List;
 
 import br.com.appbase.dominio.model.Local;
 import br.com.appbase.dominio.model.TipoMaterial;
+import br.com.appbase.view.util.FirebaseAuthApp;
 
 public class LocalRepository {
 
@@ -37,8 +38,13 @@ public class LocalRepository {
                 List<Local> locais = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Local local = snapshot.getValue(Local.class);
-                    if(!local.getUserKey().equals(mAuth.getUid()))
+                    if(FirebaseAuthApp.getUsuarioLogado() != null){
+                        if(!local.getUserKey().equals(mAuth.getUid()))
+                            locais.add(local);
+                    } else {
                         locais.add(local);
+                    }
+
                 }
                 firebaseCallback.onSuccess(locais);
             }
