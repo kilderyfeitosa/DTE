@@ -3,15 +3,20 @@ package br.com.appbase.dominio.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class Local implements Parcelable {
+public class Local implements Parcelable{
     private String nome;
     private String local;
     private String contato;
     private String userKey;
+    private String localKey;
+
+    private HashMap<String, TipoMaterial> materiais = new HashMap<>();
 
     private List<TipoMaterial> materiaisAceitos = new ArrayList<>();
 
@@ -24,6 +29,16 @@ public class Local implements Parcelable {
         this.contato = contato;
         this.materiaisAceitos = materiaisAceitos;
         this.userKey = userKey;
+    }
+
+    private Local(Parcel in) {
+        nome = in.readString();
+        local = in.readString();
+        contato = in.readString();
+        userKey = in.readString();
+        localKey = in.readString();
+
+
     }
 
     public String getNome() {
@@ -66,8 +81,12 @@ public class Local implements Parcelable {
         this.userKey = userKey;
     }
 
-    private Local(Parcel in) {
-        nome = in.readString();
+    public String getLocalKey() {
+        return localKey;
+    }
+
+    public void setLocalKey(String localKey) {
+        this.localKey = localKey;
     }
 
     public static final Parcelable.Creator<Local> CREATOR = new Parcelable.Creator<Local>() {
@@ -87,9 +106,15 @@ public class Local implements Parcelable {
         return 0;
     }
 
+
+
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(nome);
+        parcel.writeString(local);
+        parcel.writeString(contato);
+        parcel.writeString(userKey);
+        parcel.writeString(localKey);
     }
 
     @Override
@@ -101,6 +126,7 @@ public class Local implements Parcelable {
                 Objects.equals(local, local1.local) &&
                 Objects.equals(contato, local1.contato) &&
                 Objects.equals(userKey, local1.userKey) &&
+                Objects.equals(localKey, local1.localKey) &&
                 Objects.equals(materiaisAceitos, local1.materiaisAceitos);
     }
 

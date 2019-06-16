@@ -1,11 +1,16 @@
 package br.com.appbase.view.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,11 +22,14 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.appbase.R;
 import br.com.appbase.dominio.model.Local;
 import br.com.appbase.dominio.model.TipoMaterial;
+import br.com.appbase.view.activity.CadastroUsuarioActivity;
 import br.com.appbase.view.activity.DetalhesLocalActivity;
 import br.com.appbase.view.activity.MensagemActivity;
 import br.com.appbase.view.util.FirebaseAuthApp;
@@ -49,22 +57,41 @@ public class LocaisAdapter extends RecyclerView.Adapter<LocaisAdapter.ViewHolder
     public void onBindViewHolder(@NonNull final ViewHolderOpcoes holder, int position) {
         final Local local = locais.get(position);
 
+
         holder.setNomeLocal(local.getNome());
         holder.setLocalLocal(local.getLocal());
         holder.setMateriaisAceitos(local.getMateriaisAceitos());
 
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(FirebaseAuthApp.getUsuarioLogado() != null){
-                    Toast.makeText(context, "Abriu o " + local.getNome(), Toast.LENGTH_LONG).show();
+            public void onClick(View view) {
+//                if(FirebaseAuthApp.getUsuarioLogado() != null){
+////                    Toast.makeText(context, "Abriu o " + local.getNome(), Toast.LENGTH_LONG).show();
 
                     Intent abrirChat = new Intent(context, DetalhesLocalActivity.class);
+
+//                Bundle params = new Bundle();
+//                params.putParcelableArrayList("materiais", (ArrayList<? extends Parcelable>) local.getMateriaisAceitos());
+
                     abrirChat.putExtra("local", local);
+//                    abrirChat.putExtra("materiais",  local.getMateriaisAceitos());
                     context.startActivity(abrirChat);
-                } else {
-                    Toast.makeText(context, "Cadastre-se para prosseguir!", Toast.LENGTH_LONG);
-                }
+//                } else {
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                    builder.setTitle("CADASTRE-SE")
+//                            .setMessage(R.string.txt_continue_cadastro)
+//                            .setPositiveButton(R.string.txt_cont, new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    Intent abrirCadastro = new Intent(context, CadastroUsuarioActivity.class);
+//                                    context.startActivity(abrirCadastro);
+//                                }
+//                            })
+//                            .setNegativeButton(R.string.txt_canc, new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    // User cancelled the dialog
+//                                }
+//                            }).show();
+//                }
             }
         });
 

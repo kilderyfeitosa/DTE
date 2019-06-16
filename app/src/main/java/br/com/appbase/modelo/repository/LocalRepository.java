@@ -84,6 +84,7 @@ public class LocalRepository {
 
         final String localKey = databaseReference.push().getKey();
         if (localKey != null) {
+            local.setLocalKey(localKey);
             databaseReference.child(localKey).setValue(local).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

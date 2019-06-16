@@ -45,14 +45,41 @@
     <string name="adicionar_senha">Adicionar Senha</string>
     <string name="usuario_cadastrado_com_sucesso">Usuário cadastrado com sucesso!</string>
 
+    //DIALOG PARA NÃO CONECTADO
+    <string name="txt_continue_cadastro">Clique em continuar para realizar o seu cadastro e utilizar os demais recursos para usuários cadastrados."</string>
+    <string name="txt_cont">Continuar</string>
+    <string name="txt_canc">Cancelar</string>
+
+    //DETALHES
+    <string name="txt_descartar">O que deseja descartar?</string>
+    <string name="selecione">Selecione</string>
+
+
     //BUSCAR LOCAIS DE COLETA
     <string name="digite_um_nome_ou_material">Nome do local ou material</string>
     <string name="nenhum_local_cadastrado">Nenhum local cadastrado</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_selecione_descarte">Selecione os materiais para descarte</string>
+    <string name="ok_label">OK</string>
+    <string name="cancelar_label">Cancelar</string>
+    <string name="limpar_selecao">Limpar seleção</string>
+    <string name="descartar_label">Descartar</string>
 
     //ADICIONAR HORÁRIO DE FUNCIONAMENTO
+    
+    
+    //Implementações
+    <string-array name="shopping_item">
+        <item>Cabos</item>
+        <item>Pilhas</item>
+        <item>Celulares</item>
+        <item>Eletrodomésticos</item>
+        <item>Componentes de Computadores</item>
+        <item>Baterias</item>
+        <item>Eletrônicos</item>
+    </string-array>
 
 
 </resources>

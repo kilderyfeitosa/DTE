@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,12 +30,17 @@ import java.util.List;
 import br.com.appbase.R;
 import br.com.appbase.dominio.model.Local;
 import br.com.appbase.view.adapter.LocaisAdapter;
+import br.com.appbase.view.adapter.ViewPageAdapter;
+import br.com.appbase.view.fragments.ChatsFragment;
+import br.com.appbase.view.fragments.UsersFragment;
 import br.com.appbase.view.viewmodel.BuscaLocalViewModel;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout navigationDrawer;
     private Toolbar toolbar;
+    private TabLayout tabLayout;
+
 
     private MaterialSearchView searchViewBuscarLocais;
 
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         configurarDrawerLayout();
         configurarSearchViewBuscarLocais();
         configurarRecyclerViewLocais();
+//        configurarTabLayout();
 
         buscaLocalViewModel = ViewModelProviders.of(this).get(BuscaLocalViewModel.class);
         buscaLocalViewModel.buscarTodosLocais();
@@ -76,6 +84,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+//    private void configurarTabLayout() {
+//        tabLayout = findViewById(R.id.tab_layout);
+//        ViewPager viewPager = findViewById(R.id.view_pager);
+//
+//
+//        ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
+//        viewPageAdapter.addFragment(new UsersFragment(), "Locais");
+//        viewPageAdapter.addFragment(new ChatsFragment(), "Chats");
+//
+//        viewPager.setAdapter(viewPageAdapter);
+//
+//        tabLayout.setupWithViewPager(viewPager);
+//
+//    }
+
 
     private void configurarSearchViewBuscarLocais() {
         searchViewBuscarLocais = findViewById(R.id.search_view);

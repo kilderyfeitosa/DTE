@@ -5,6 +5,7 @@ import com.google.firebase.database.Exclude;
 public class TipoMaterial implements Comparable<TipoMaterial> {
 
     private String descricao;
+    private String imgUrl;
 
     @Exclude //Ignora quando envia para o Firebase
     private boolean selecionado;
@@ -12,8 +13,9 @@ public class TipoMaterial implements Comparable<TipoMaterial> {
     public TipoMaterial() {
     }
 
-    public TipoMaterial(String descricao) {
+    public TipoMaterial(String descricao, String imgUrl) {
         this.descricao = descricao;
+        this.imgUrl = imgUrl;
     }
 
     public String getDescricao() {
@@ -22,6 +24,14 @@ public class TipoMaterial implements Comparable<TipoMaterial> {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public boolean isSelecionado() {
@@ -36,4 +46,6 @@ public class TipoMaterial implements Comparable<TipoMaterial> {
     public int compareTo(TipoMaterial tipoMaterial) {
         return this.getDescricao().compareTo(tipoMaterial.getDescricao());
     }
+
+
 }

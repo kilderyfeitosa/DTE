@@ -1,141 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.activity.DetalhesLocalActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@color/colorPrimary"
-        tools:ignore="MissingConstraints"
-        android:orientation="horizontal" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout_bottom"
+        >
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="8dp"
-        android:src="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        tools:layout_editor_absoluteY="16dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/txt_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/profile_image"
-        android:layout_alignTop="@+id/profile_image"
-        android:layout_alignEnd="@+id/profile_image"
-        android:layout_alignBottom="@+id/profile_image"
-        android:gravity="center"
-        android:text="FB"
-        android:textColor="@color/blank_text_color"
-        android:textSize="80dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-        app:layout_constraintEnd_toEndOf="@+id/profile_image"
-        app:layout_constraintStart_toStartOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="@+id/profile_image" />
+        <include layout="@layout/content_detalhes_local"/>
+    </ScrollView>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/layout_bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/nome_local"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/adicionar_nome"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="22dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Responsável"
-            android:textColor="@color/cinza_text_color"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/nome_usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/adicionar_nome"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="22dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Materiais aceitos"
-            android:textColor="@color/cinza_text_color"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/material_aceito_item" />
-
-            <include layout="@layout/material_aceito_item" />
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
         android:orientation="vertical"
         android:gravity="center"
         android:background="@color/blank_text_color"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="O que deseja descartar?"
+            android:text="@string/txt_descartar"
             android:textColor="@color/cinza_text_color"
-            android:layout_margin="5dp"
+            android:layout_marginTop="5dp"
             android:textSize="18dp"
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btn_selecionar"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Envie uma mensagem"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content"
+            android:text="@string/selecione"
             android:textSize="22sp"
             android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_margin="5dp"
             android:textColor="@color/blank_text_color"
             android:background="@drawable/background_round"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:backgroundTint="@color/colorPrimary"
+            tools:ignore="OnClick" />
     </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

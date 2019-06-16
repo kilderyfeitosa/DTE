@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.MainActivity"
-    android:layout_marginTop="40dp">
+    tools:context=".view.activity.MainActivity">
 
     <TextView
         android:id="@+id/tv_nenhum_local_cadastrado"
@@ -27,6 +26,7 @@
         android:id="@+id/locais_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="10dp"
         android:background="@color/cinza_claro_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -28,6 +28,7 @@ import java.util.List;
 
 import br.com.appbase.R;
 import br.com.appbase.dominio.model.Chat;
+import br.com.appbase.dominio.model.Local;
 import br.com.appbase.dominio.model.Usuario;
 import br.com.appbase.view.adapter.MessageAdapter;
 import br.com.appbase.view.util.DataUtil;
@@ -45,6 +46,7 @@ public class MessageActivity extends AppCompatActivity {
     ImageButton btn_send;
     EditText text_send;
     String userKey;
+    Local local;
 
     MessageAdapter messageAdapter;
     List<Chat> mChat;
@@ -84,6 +86,7 @@ public class MessageActivity extends AppCompatActivity {
 
         intent = getIntent();
         userKey = intent.getStringExtra("userkey");
+        local = intent.getParcelableExtra("local");
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("usuarios").child(userKey);
@@ -100,7 +103,7 @@ public class MessageActivity extends AppCompatActivity {
                     Glide.with(MessageActivity.this).load(user.getImgURL()).into(profile_image);
                 }
 
-                readMessage(fuser.getUid(), userKey, user.getImgURL());
+                readMessage(fuser.getUid(), userKey, user.getImgURL(), local.getLocalKey());
             }
 
             @Override
@@ -115,6 +118,10 @@ public class MessageActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
 
+        String msg = intent.getStringExtra("msg");
+        if(!msg.isEmpty())
+            text_send.setText(msg);
+
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -128,7 +135,7 @@ public class MessageActivity extends AppCompatActivity {
                 String msg = text_send.getText().toString().trim();
 
                 if(!msg.isEmpty() || msg.trim().equals(" ")){
-                    sendMessage(fuser.getUid(), userKey, msg, new DataUtil().getData("HH:mm"));
+                    sendMessage(fuser.getUid(), userKey, msg, new DataUtil().getData("HH:mm"), local.getLocalKey());
                 } else {
                 }
 
@@ -137,20 +144,21 @@ public class MessageActivity extends AppCompatActivity {
         });
     }
 
-    private void sendMessage(String sender, String receiver, String message, String hora){
+    private void sendMessage(String sender, String receiver, String message, String hora, String localKey){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("sender", sender);
         hashMap.put("receiver", receiver);
         hashMap.put("message", message.trim());
+        hashMap.put("localKey", localKey);
         hashMap.put("hora", hora);
 
         reference.child("chats").push().setValue(hashMap);
 
     }
 
-    private void readMessage(final String myid, final String userid, final String imgUrl){
+    private void readMessage(final String myid, final String userid, final String imgUrl, final String localKey){
         mChat = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("chats");
@@ -160,8 +168,8 @@ public class MessageActivity extends AppCompatActivity {
                 mChat.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
-                    if(chat.getReceiver().equals(myid) &&  chat.getSender().equals(userid) ||
-                            chat.getReceiver().equals(userid) && chat.getSender().equals(myid)){
+                    if(chat.getReceiver().equals(myid) &&  chat.getSender().equals(userid) && chat.getLocalKey().equals(localKey)||
+                            chat.getReceiver().equals(userid) && chat.getSender().equals(myid) && chat.getLocalKey().equals(localKey)){
 
                         mChat.add(chat);
 

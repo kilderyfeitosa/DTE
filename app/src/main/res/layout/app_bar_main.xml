@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.activity.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <FrameLayout
@@ -29,12 +30,18 @@
                 android:layout_height="wrap_content" />
 
         </FrameLayout>
-
-
+        <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/tab_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--app:tabSelectedTextColor="@color/blank_text_color"-->
+            <!--app:tabIndicatorColor="@color/blank_text_color"-->
+            <!--app:tabTextColor="@color/cinza_text_color"/>-->
     </android.support.design.widget.AppBarLayout>
 
     <include
         android:id="@+id/include_main"
         layout="@layout/content_main_activity" />
 
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
