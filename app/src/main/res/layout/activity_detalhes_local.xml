@@ -39,7 +39,6 @@
             android:layout_height="wrap_content"
             android:text="@string/selecione"
             android:textSize="22sp"
-            android:textStyle="bold"
             android:padding="10dp"
             android:layout_margin="5dp"
             android:textColor="@color/blank_text_color"

@@ -30,15 +30,21 @@
                 android:layout_height="wrap_content" />
 
         </FrameLayout>
-        <!--<android.support.design.widget.TabLayout-->
-            <!--android:id="@+id/tab_layout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="40dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--app:tabSelectedTextColor="@color/blank_text_color"-->
-            <!--app:tabIndicatorColor="@color/blank_text_color"-->
-            <!--app:tabTextColor="@color/cinza_text_color"/>-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            app:tabSelectedTextColor="@color/blank_text_color"
+            app:tabIndicatorColor="@color/blank_text_color"
+            app:tabTextColor="@color/color_verde_claro"/>
     </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <include
         android:id="@+id/include_main"

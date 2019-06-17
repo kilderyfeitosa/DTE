@@ -24,8 +24,10 @@ import java.util.List;
 
 import br.com.appbase.R;
 import br.com.appbase.dominio.model.Chat;
+import br.com.appbase.dominio.model.Local;
 import br.com.appbase.dominio.model.Usuario;
 import br.com.appbase.view.adapter.UserAdapter;
+import br.com.appbase.view.util.FirebaseAuthApp;
 
 public class ChatsFragment extends Fragment {
 
@@ -34,8 +36,12 @@ public class ChatsFragment extends Fragment {
     private UserAdapter userAdapter;
     private List<Usuario> mUsers;
 
+    private String localKey;
+    private Local local;
+
     FirebaseUser fuser;
     DatabaseReference reference;
+    DatabaseReference ref;
 
     private List<String> usersList;
 
@@ -54,6 +60,13 @@ public class ChatsFragment extends Fragment {
 
         usersList = new ArrayList<>();
 
+        if(FirebaseAuthApp.getUsuarioLogado()!=null)
+            configurarChat();
+
+        return view;
+    }
+
+    private void configurarChat(){
         reference = FirebaseDatabase.getInstance().getReference("chats");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,6 +75,9 @@ public class ChatsFragment extends Fragment {
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
+
+                    localKey = chat.getLocalKey();
+
 
                     if(chat.getSender().equals(fuser.getUid())){
                         usersList.add(chat.getReceiver());
@@ -73,6 +89,28 @@ public class ChatsFragment extends Fragment {
 
                 }
 
+              if(localKey != null){
+                  ref = FirebaseDatabase.getInstance().getReference("locais").child(localKey);
+                  ref.addValueEventListener(new ValueEventListener() {
+                      @Override
+                      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+//                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                          Local l = dataSnapshot.getValue(Local.class);
+                          local = l;
+
+
+//                        }
+
+                      }
+
+                      @Override
+                      public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                      }
+                  });
+              }
+
                 readChats();
             }
 
@@ -81,8 +119,6 @@ public class ChatsFragment extends Fragment {
 
             }
         });
-
-        return view;
     }
 
     private void readChats() {
@@ -116,7 +152,7 @@ public class ChatsFragment extends Fragment {
                     }
                 }
 
-                userAdapter = new UserAdapter(getContext(), mUsers);
+                userAdapter = new UserAdapter(getContext(), mUsers, local);
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -126,6 +162,8 @@ public class ChatsFragment extends Fragment {
             }
         });
     }
+
+
 
 
 }

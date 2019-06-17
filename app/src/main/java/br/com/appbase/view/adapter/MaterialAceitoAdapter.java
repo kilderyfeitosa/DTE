@@ -45,8 +45,22 @@ public class MaterialAceitoAdapter extends RecyclerView.Adapter<MaterialAceitoAd
         if(tipoMaterial.getImgUrl() == null)
             tipoMaterial.setImgUrl("default");
 
+
         if(tipoMaterial.getImgUrl().equals("default")){
             holder.img_tipo_material_item.setImageResource(R.drawable.ic_recycle_24dp);
+
+            if(tipoMaterial.getDescricao().equals("Baterias"))
+                holder.img_tipo_material_item.setImageResource(R.drawable.ic_battery_24dp);
+            if(tipoMaterial.getDescricao().equals("Cabos"))
+                holder.img_tipo_material_item.setImageResource(R.drawable.ic_cabo_24dp);
+            if(tipoMaterial.getDescricao().equals("Celulares"))
+                holder.img_tipo_material_item.setImageResource(R.drawable.ic_smartphone_24dp);
+            if(tipoMaterial.getDescricao().equals("Componentes de Computadores"))
+                holder.img_tipo_material_item.setImageResource(R.drawable.ic_memory_24dp);
+            if(tipoMaterial.getDescricao().equals("Eletrodomésticos"))
+                holder.img_tipo_material_item.setImageResource(R.drawable.ic_kitchen_24dp);
+            if(tipoMaterial.getDescricao().equals("Eletrônicos"))
+                holder.img_tipo_material_item.setImageResource(R.drawable.ic_devices_other_24dp);
         } else {
             Glide.with(mContext).load(tipoMaterial.getImgUrl()).into(holder.img_tipo_material_item);
         }

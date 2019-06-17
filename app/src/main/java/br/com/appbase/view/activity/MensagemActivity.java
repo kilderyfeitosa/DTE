@@ -93,7 +93,7 @@ public class MensagemActivity extends AppCompatActivity {
 
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
         viewPageAdapter.addFragment(new ChatsFragment(), "Chats");
-        viewPageAdapter.addFragment(new UsersFragment(), "Users");
+        viewPageAdapter.addFragment(new UsersFragment(), "Locais");
 
         viewPager.setAdapter(viewPageAdapter);
 

@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import br.com.appbase.R;
+import br.com.appbase.dominio.model.Local;
 import br.com.appbase.dominio.model.Usuario;
 import br.com.appbase.view.activity.MessageActivity;
 
@@ -22,10 +23,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context mContext;
     private List<Usuario> mUsers;
+    private Local local;
 
-    public UserAdapter(Context mContext, List<Usuario> mUsers){
+    public UserAdapter(Context mContext, List<Usuario> mUsers, Local local){
         this.mUsers = mUsers;
         this.mContext = mContext;
+        this.local = local;
+
     }
 
     @NonNull
@@ -39,7 +43,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final Usuario user = mUsers.get(position);
-        holder.username.setText(user.getNome());
+        holder.username.setText(user.getNome() + " - " + local.getNome());
 
         if(user.getImgURL().equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
@@ -52,6 +56,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             public void onClick(View v) {
                 Intent abrirMessage = new Intent(mContext, MessageActivity.class);
                 abrirMessage.putExtra("userkey", user.getUserKey());
+                abrirMessage.putExtra("local", local);
                 mContext.startActivity(abrirMessage);
 
             }

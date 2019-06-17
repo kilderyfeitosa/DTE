@@ -18,10 +18,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
@@ -29,10 +36,12 @@ import java.util.List;
 
 import br.com.appbase.R;
 import br.com.appbase.dominio.model.Local;
+import br.com.appbase.dominio.model.Usuario;
 import br.com.appbase.view.adapter.LocaisAdapter;
 import br.com.appbase.view.adapter.ViewPageAdapter;
 import br.com.appbase.view.fragments.ChatsFragment;
 import br.com.appbase.view.fragments.UsersFragment;
+import br.com.appbase.view.util.FirebaseAuthApp;
 import br.com.appbase.view.viewmodel.BuscaLocalViewModel;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout navigationDrawer;
     private Toolbar toolbar;
     private TabLayout tabLayout;
+
+    private TextView username;
+
+    FirebaseUser firebaseUser;
+    DatabaseReference reference;
+
 
 
     private MaterialSearchView searchViewBuscarLocais;
@@ -49,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BuscaLocalViewModel buscaLocalViewModel;
 
     private List<Local> locaisList;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +75,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         configurarDrawerLayout();
         configurarSearchViewBuscarLocais();
         configurarRecyclerViewLocais();
-//        configurarTabLayout();
+
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.view_pager);
+        if(FirebaseAuthApp.getUsuarioLogado()!=null){
+            configurarFirebase();
+//        configurarToolbar();
+            configurarTabLayout();
+        } else {
+
+
+            tabLayout.setVisibility(View.GONE);
+            viewPager.setVisibility(View.GONE);
+        }
+
 
         buscaLocalViewModel = ViewModelProviders.of(this).get(BuscaLocalViewModel.class);
         buscaLocalViewModel.buscarTodosLocais();
@@ -252,5 +281,55 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void configurarFirebase(){
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("usuarios").child(firebaseUser.getUid());
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Usuario usuario = dataSnapshot.getValue(Usuario.class);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+//    private void configurarToolbar() {
+//        toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//            getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        }
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//
+//    }
+
+    private void configurarTabLayout() {
+        tabLayout.setVisibility(View.VISIBLE);
+        viewPager.setVisibility(View.VISIBLE);
+
+
+        ViewPageAdapter viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
+        viewPageAdapter.addFragment(new UsersFragment(), "Locais");
+        viewPageAdapter.addFragment(new ChatsFragment(), "Chats");
+
+
+        viewPager.setAdapter(viewPageAdapter);
+
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 }

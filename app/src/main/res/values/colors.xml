@@ -8,6 +8,8 @@
     <color name="black_text_color">#212121</color>
     <color name="cinza_text_color">#9E9E9E</color>
     <color name="cinza_claro_text_color">#C7C6C6</color>
+    <color name="color_verde_claro">#5FB962</color>
+
 
     <color name="icon_color">#6f6f6f</color>
 </resources>

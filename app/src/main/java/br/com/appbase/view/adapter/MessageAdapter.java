@@ -18,6 +18,7 @@ import java.util.List;
 
 import br.com.appbase.R;
 import br.com.appbase.dominio.model.Chat;
+import br.com.appbase.dominio.model.Local;
 import br.com.appbase.dominio.model.Usuario;
 import br.com.appbase.view.activity.MessageActivity;
 
@@ -29,13 +30,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private Context mContext;
     private List<Chat> mChats;
     private String imgUrl;
+    private Local local;
 
     FirebaseUser fuser;
 
-    public MessageAdapter(Context mContext, List<Chat> mChats, String imgUrl){
+    public MessageAdapter(Context mContext, List<Chat> mChats, String imgUrl, Local local){
         this.mChats = mChats;
         this.mContext = mContext;
         this.imgUrl = imgUrl;
+        this.local = local;
     }
 
     @NonNull

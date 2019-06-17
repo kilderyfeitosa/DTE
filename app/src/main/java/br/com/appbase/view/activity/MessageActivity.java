@@ -95,7 +95,7 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuario user = dataSnapshot.getValue(Usuario.class);
-                username.setText(user.getNome());
+                username.setText(user.getNome() + " - " + local.getNome());
 
                 if(user.getImgURL().equals("default")){
                     profile_image.setImageResource(R.mipmap.ic_launcher);
@@ -118,9 +118,11 @@ public class MessageActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
 
-        String msg = intent.getStringExtra("msg");
-        if(!msg.isEmpty())
-            text_send.setText(msg);
+//        if(intent.getStringArrayListExtra("msg") != null){
+            String msg = intent.getStringExtra("msg");
+                text_send.setText(msg);
+//        }
+
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -168,14 +170,14 @@ public class MessageActivity extends AppCompatActivity {
                 mChat.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
-                    if(chat.getReceiver().equals(myid) &&  chat.getSender().equals(userid) && chat.getLocalKey().equals(localKey)||
-                            chat.getReceiver().equals(userid) && chat.getSender().equals(myid) && chat.getLocalKey().equals(localKey)){
+                    if(chat.getReceiver().equals(myid) &&  chat.getSender().equals(userid)||
+                            chat.getReceiver().equals(userid) && chat.getSender().equals(myid) ){
 
                         mChat.add(chat);
 
                     }
 
-                    messageAdapter = new MessageAdapter(MessageActivity.this, mChat, imgUrl);
+                    messageAdapter = new MessageAdapter(MessageActivity.this, mChat, imgUrl, local);
                     recyclerView.setAdapter(messageAdapter);
                 }
             }
